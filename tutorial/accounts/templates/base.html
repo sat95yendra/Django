@@ -1,0 +1,54 @@
+<html>
+<head>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  {% block head %}
+  <title>Base</title>
+  {% endblock %}
+</head>
+<body>
+<br/>
+<div class="container">
+      <!-- Static navbar -->
+      <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a style="color:white" class="navbar-brand" href="/">
+              <b> Bista Solutions Inc.</b>
+            </a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            {% if request.user.is_authenticated %}
+            <ul class="nav navbar-nav">
+              <li><a style="color:black" href="/account">Home</a></li>
+              <li><a style="color:black" href="{% url 'accounts:view_profile' %}">Profile</a></li>
+              <li><a style="color:black" href="/account/profile/edit">Profile Edit</a></li>
+              <li><a style="color:black" style="color:black" href="/account/change-password">change Password</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a style="color:black" href="/account/logout">Log out</a></li>
+            </ul>
+            {% else %}
+            <ul class="nav navbar-nav">
+              <li><a style="color:black" href="/account/password-reset">Reset Password</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a style="color:black" href="/account/login">Login</a></li>
+              <li><a style="color:black" href="/account/register">Register</a></li>
+            </ul>
+            {% endif %}
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+</div>
+{% block body %}
+<h1>Base.......</h1>
+{% endblock %}
+</body>
+</html>
